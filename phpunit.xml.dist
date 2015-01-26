@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<phpunit
+        bootstrap="_tests_bootstrap.php"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        stopOnFailure="true"
+        processIsolation="false"
+        backupGlobals="false"
+        syntaxCheck="true"
+        strict="true"
+        >
+    <testsuite name="all">
+    </testsuite>
+</phpunit>
