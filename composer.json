@@ -1,16 +1,23 @@
 {
-    "name": "granam/spl-type",
+    "name": "granam/spl-types",
     "type": "library",
     "description": "Fallback option for projects requiring SPL types, but on hosting without necessary extension",
     "license": "MIT",
     "autoload": {
-        "psr-4": { "Granam\\": "Granam/" }
+        "psr-4": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jaroslavtyc/granam-native-spl-type-behaviour-investigation"
+        }
+    ],
     "require": {
         "php": ">=5.3"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4",
-        "mockery/mockery": "0.9.*"
+        "mockery/mockery": "0.9.*",
+        "granam/native-spl-type-behaviour-investigation": "dev-master"
     }
 }
