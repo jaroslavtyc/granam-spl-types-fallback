@@ -1,5 +1,5 @@
 {
-    "name": "granam/spl-types",
+    "name": "granam/spl-types-fallback",
     "type": "library",
     "description": "Fallback option for projects requiring SPL types, but on hosting without necessary extension",
     "license": "MIT",
