@@ -38,7 +38,7 @@ class SplString extends SplType
                 throw new \UnexpectedValueException('Value not a string');
             }
         } else {
-            if (is_object($initial_value)) {
+            if (is_object($initial_value) && !method_exists($initial_value, '__toString')) {
                 trigger_error('Object of class ' . get_class($initial_value) . ' to string conversion', E_USER_NOTICE);
                 throw new \InvalidArgumentException('Object of class ' . get_class($initial_value) . ' could not be converted to string');
             }
