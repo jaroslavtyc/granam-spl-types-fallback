@@ -32,6 +32,12 @@ abstract class SplType
         if ($initial_value === true) {
             throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
         }
+        if (is_int($initial_value) && $initial_value !== 0) {
+            throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
+        }
+        if (is_float($initial_value) && $initial_value !== 0.0) {
+            throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
+        }
         if (is_array($initial_value) && sizeof($initial_value) > 0) {
             throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
         }
