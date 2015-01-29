@@ -17,28 +17,35 @@ abstract class SplType
      * @param mixed $initial_value
      * @param bool $strict
      */
-    public function __construct($initial_value = self::__default, $strict = true)
+    public function __construct($initial_value = self::__default, $strict = false)
     {
-        $this->checkInitialValue($initial_value);
+        $this->checkInitialValue($initial_value, $strict);
         $this->initial_value = $this->sanitizeInitialValue($initial_value);
         $this->strict = $strict;
     }
 
     /**
      * @param mixed $initial_value
+     * @param bool $strict
      */
-    private function checkInitialValue($initial_value)
+    private function checkInitialValue($initial_value, $strict)
     {
         if ($initial_value === true) {
             throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
         }
-        if (is_int($initial_value) && $initial_value !== 0) {
+        if ($initial_value === false && $strict) {
             throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
         }
-        if (is_float($initial_value) && $initial_value !== 0.0) {
+        if (is_string($initial_value) && ($strict || strlen($initial_value) > 0)) {
             throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
         }
-        if (is_array($initial_value) && sizeof($initial_value) > 0) {
+        if (is_int($initial_value) && ($strict || $initial_value !== 0)) {
+            throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
+        }
+        if (is_float($initial_value) && ($strict || $initial_value !== 0.0)) {
+            throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
+        }
+        if (is_array($initial_value) && ($strict || sizeof($initial_value) > 0)) {
             throw new \UnexpectedValueException('Value not a const in enum ' . get_class($this));
         }
         if (is_object($initial_value)) {

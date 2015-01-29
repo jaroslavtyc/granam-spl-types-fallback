@@ -24,7 +24,8 @@ class SplString extends SplType
     {
         // following sequence is important to mirror behaviour of the native SPL string
         $this->checkInitialValue($initial_value, $strict);
-        parent::__construct((string)$initial_value, $strict);
+        $this->initial_value = (string)$initial_value;
+        $this->strict = $strict;
     }
 
     /**
