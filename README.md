@@ -1,4 +1,4 @@
-##Covereage
+##Coverage
 Only the SPL string and SPL type (generic) are covered by this library.
 
 ###Purpose
