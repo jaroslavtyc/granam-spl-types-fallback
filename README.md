@@ -1,3 +1,6 @@
+##Covereage
+Only the SPL string and SPL type (generic) are covered by this library.
+
 ###Purpose
 For projects where native [PHP SPL types](http://php.net/manual/en/book.spl-types.php)
 in [version 0.4](http://pecl.php.net/package-changelog.php?package=SPL_Types&release=0.4.0) are required,
