@@ -100,4 +100,75 @@ class SplStringTest extends \Granam\Clones\Tests\SplStringTest
         }
     }
 
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Object of class stdClass could not be converted to string
+     */
+    public function object_cause_notice_and_throws_exception_even_not_strict()
+    {
+        $originalErrorReporting = error_reporting();
+        error_reporting(E_ALL ^ E_USER_NOTICE); // notices standard reporting temporary disabled
+        try {
+            new \SplString(new \stdClass(), false);
+        } catch (\Exception $exception) {
+            $lastError = error_get_last();
+            $this->assertInternalType('array', $lastError);
+            $this->assertTrue(!empty($lastError['type']));
+            $this->assertSame(E_USER_NOTICE, $lastError['type']);
+            $this->assertTrue(!empty($lastError['file']));
+            $splStringReflection = new \ReflectionClass(\SplString::class);
+            $this->assertSame($splStringReflection->getFileName(), $lastError['file']);
+            $checkerReflection = $splStringReflection->getMethod('checkInitialValue');
+            $this->assertGreaterThanOrEqual($checkerReflection->getStartLine(), $lastError['line']);
+            $this->assertLessThanOrEqual($checkerReflection->getEndLine(), $lastError['line']);
+            $this->assertTrue(!empty($lastError['message']));
+            $this->assertSame('Object of class stdClass to string conversion', $lastError['message']);
+            throw $exception;
+        } finally {
+            error_reporting($originalErrorReporting); // restoring previous error reporting
+        }
+    }
+
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Object of class Closure could not be converted to string
+     */
+    public function closure_cause_notice_and_throws_exception_even_not_strict()
+    {
+        $originalErrorReporting = error_reporting();
+        error_reporting(E_ALL ^ E_USER_NOTICE); // notices standard reporting temporary disabled
+        try {
+            new \SplString(
+                function () {
+                },
+                false
+            );
+        } catch (\Exception $exception) {
+            $lastError = error_get_last();
+            $this->assertInternalType('array', $lastError);
+            $this->assertTrue(!empty($lastError['type']));
+            $this->assertSame(E_USER_NOTICE, $lastError['type']);
+            $this->assertTrue(!empty($lastError['file']));
+            $splStringReflection = new \ReflectionClass(\SplString::class);
+            $this->assertSame($splStringReflection->getFileName(), $lastError['file']);
+            $this->assertTrue(!empty($lastError['line']));
+            $checkerReflection = $splStringReflection->getMethod('checkInitialValue');
+            $this->assertGreaterThanOrEqual($checkerReflection->getStartLine(), $lastError['line']);
+            $this->assertLessThanOrEqual($checkerReflection->getEndLine(), $lastError['line']);
+            $this->assertTrue(!empty($lastError['message']));
+            $this->assertSame('Object of class Closure to string conversion', $lastError['message']);
+            throw $exception;
+        } finally {
+            error_reporting($originalErrorReporting); // restoring previous error reporting
+        }
+    }
+
+    /** @test */
+    public function a_string_if_not_strict_is_not_lost_after_serialize()
+    {
+        $this->markTestSkipped('Serializing of the fallback SplString leads to binary string.');
+    }
+
 }

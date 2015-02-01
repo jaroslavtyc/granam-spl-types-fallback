@@ -53,4 +53,10 @@ class SplString extends SplType
     {
         return $this->initial_value;
     }
+
+    public function __wakeup()
+    {
+        // the native SPL string behaviour on unserialize is loosing the initial value
+        $this->initial_value = self::__default;
+    }
 }
