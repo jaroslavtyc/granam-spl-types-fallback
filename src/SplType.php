@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Behaviour of this class is cloned from detail investigation, @link https://github.com/jaroslavtyc/granam-native-spl-type-behaviour-investigation
+ * Behaviour of this class is cloned from detail investigation, @link https://github.com/jaroslavtyc/native-spl-type-behaviour-investigation
  * There is one assumption - this class is not autoloaded, when spl_types PHP extension is loaded, because of native SplType class global availability.
  *
  * Class SplType
@@ -63,7 +63,7 @@ abstract class SplType
     private function sanitizeInitialValue($initial_value)
     {
         if (is_array($initial_value) && sizeof($initial_value) === 0) {
-            /** @see \Granam\Clones\Tests\SplTypeTest::with_empty_array_is_empty_string_as_string */
+            /** @see \Jaroslavtyc\Clones\Tests\SplTypeTest::with_empty_array_is_empty_string_as_string */
             return '';
         }
         if ($initial_value === 0) {

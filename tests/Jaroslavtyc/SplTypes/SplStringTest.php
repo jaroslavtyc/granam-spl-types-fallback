@@ -1,7 +1,7 @@
 <?php
-namespace Granam\SplTypes;
+namespace Jaroslavtyc\SplTypes;
 
-class SplStringTest extends \Granam\Clones\Tests\SplStringTest
+class SplStringTest extends \Jaroslavtyc\Clones\Tests\SplStringTest
 {
 
     /**

@@ -1,9 +1,9 @@
 <?php
-namespace Granam\SplTypes;
+namespace Jaroslavtyc\SplTypes;
 
-use Granam\Clones\Tests\SplTypeChild;
+use Jaroslavtyc\Clones\Tests\SplTypeChild;
 
-class SplTypeTest extends \Granam\Clones\Tests\SplTypeTest
+class SplTypeTest extends \Jaroslavtyc\Clones\Tests\SplTypeTest
 {
 
     /** @test */

@@ -1,5 +1,5 @@
 {
-    "name": "granam/spl-types-fallback",
+    "name": "jaroslavtyc/spl-types-fallback",
     "type": "library",
     "description": "Fallback option for projects requiring SPL types, but on hosting without necessary extension",
     "license": "MIT",
@@ -9,7 +9,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/jaroslavtyc/granam-native-spl-type-behaviour-investigation"
+            "url": "/home/jaroslav/Dropbox/Projects/native-spl-type-behaviour-investigation"
         }
     ],
     "require": {
@@ -18,6 +18,6 @@
     "require-dev": {
         "phpunit/phpunit": "~4.4",
         "mockery/mockery": "0.9.*",
-        "granam/native-spl-type-behaviour-investigation": "dev-master"
+        "jaroslavtyc/native-spl-type-behaviour-investigation": "dev-master"
     }
 }
