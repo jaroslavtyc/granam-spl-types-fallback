@@ -1,23 +1,27 @@
 {
-    "name": "jaroslavtyc/spl-types-fallback",
-    "type": "library",
-    "description": "Fallback option for projects requiring SPL types, but on hosting without necessary extension",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": { "": "src/" }
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "/home/jaroslav/Dropbox/Projects/native-spl-type-behaviour-investigation"
-        }
-    ],
-    "require": {
-        "php": ">=5.3"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.4",
-        "mockery/mockery": "0.9.*",
-        "jaroslavtyc/native-spl-type-behaviour-investigation": "dev-master"
+  "name": "jaroslavtyc/spl-types-fallback",
+  "type": "library",
+  "description": "Fallback option for projects requiring SPL types, but on hosting without necessary extension",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "": "src/"
     }
+  },
+  "require": {
+    "php": ">=5.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.4",
+    "mockery/mockery": "0.9.*",
+    "jaroslavtyc/native-spl-type-behaviour-investigation": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/jaroslavtyc/native-spl-type-behaviour-investigation"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
